@@ -4,6 +4,7 @@ import io.restassured.response.Response;
 import org.apache.http.HttpStatus;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import pl.aogiri.tmm.test.rest.model.ResponseModel;
 import pl.aogiri.tmm.test.rest.model.UserModel;
 
 import static io.restassured.RestAssured.given;
@@ -35,10 +36,11 @@ public class UserRegister extends BaseTest{
                 .when()
                 .post(usersEndPoint);
         Assertions.assertEquals(HttpStatus.SC_UNPROCESSABLE_ENTITY, response.statusCode());
+        Assertions.assertTrue(response.as(ResponseModel.class).getErrors().parallelStream().anyMatch(error -> error.getMessage().equals("size must be between 6 and 32")));
     }
 
     @Test
-    public void shouldNotCreateUserloginTooLong(){
+    public void shouldNotCreateUserLoginTooLong(){
         UserModel userModel = UserModel.builder().login("ZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZ").email("tmmuser345@gmail.com").plainPassword("Duzaliterka123").build();
         Response response = given()
                 .contentType("application/json")
