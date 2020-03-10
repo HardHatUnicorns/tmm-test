@@ -13,7 +13,7 @@ public class UserRegister extends BaseTest{
 
     @Test
     public void shouldCreateUser(){
-        UserModel userModel = UserModel.builder().login("mihaltomurzyn").email("mihu123@gmail.com").plainPassword("Duzaliterka123").build();
+        UserModel userModel = UserModel.builder().login("tmmuser123").email("tmmuser123@gmail.com").plainPassword("Duzaliterka123").build();
         Response response = given()
                 .contentType("application/json")
                 .body(userModel)
@@ -27,7 +27,7 @@ public class UserRegister extends BaseTest{
 
     @Test
     public void shouldNotCreateUserLoginTooShort(){
-        UserModel userModel = UserModel.builder().login("mihal").email("mihu1234@gmail.com").plainPassword("Duzaliterka123").build();
+        UserModel userModel = UserModel.builder().login("tmmus").email("tmmuser321@gmail.com").plainPassword("Duzaliterka123").build();
         Response response = given()
                 .contentType("application/json")
                 .body(userModel)
@@ -39,7 +39,7 @@ public class UserRegister extends BaseTest{
 
     @Test
     public void shouldNotCreateUserloginTooLong(){
-        UserModel userModel = UserModel.builder().login("ZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZ").email("mihu1234@gmail.com").plainPassword("Duzaliterka123").build();
+        UserModel userModel = UserModel.builder().login("ZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZ").email("tmmuser345@gmail.com").plainPassword("Duzaliterka123").build();
         Response response = given()
                 .contentType("application/json")
                 .body(userModel)
@@ -51,7 +51,7 @@ public class UserRegister extends BaseTest{
 
     @Test
     public void shouldNotCreateUserPasswordTooShort(){
-        UserModel userModel = UserModel.builder().login("mihalaa").email("mihu1234@gmail.com").plainPassword("Dua123").build();
+        UserModel userModel = UserModel.builder().login("tmmuser098").email("tmmuser345@gmail.com").plainPassword("Dua123").build();
         Response response = given()
                 .contentType("application/json")
                 .body(userModel)
@@ -63,7 +63,7 @@ public class UserRegister extends BaseTest{
 
     @Test
     public void shouldNotCreateUserPasswordTooLong(){
-        UserModel userModel = UserModel.builder().login("mihal").email("mihu1234@gmail.com").plainPassword("Duzalitaaaaaaaaaaaaaaaaaaaaaaaaaaaaadwadawdwawdawdawaawawddwadwaadwdawawddawdawawawdwaddawdwaawdaddawadwdwwerka123").build();
+        UserModel userModel = UserModel.builder().login("tmmuserdfg").email("tmmuserzxc@gmail.com").plainPassword("Duzalitaaaaaaaaaaaaaaaaaaaaaaaaaaaaadwadawdwawdawdawaawawddwadwaadwdawawddawdawawawdwaddawdwaawdaddawadwdwwerka123").build();
         Response response = given()
                 .contentType("application/json")
                 .body(userModel)
@@ -75,7 +75,7 @@ public class UserRegister extends BaseTest{
 
     @Test
     public void shouldNotCreateUserNoUpperCharacterPassword(){
-        UserModel userModel = UserModel.builder().login("mihal").email("mihu1234@gmail.com").plainPassword("duzaliterka123").build();
+        UserModel userModel = UserModel.builder().login("tmmuser567").email("jkl@gmail.com").plainPassword("duzaliterka123").build();
         Response response = given()
                 .contentType("application/json")
                 .body(userModel)
@@ -87,7 +87,7 @@ public class UserRegister extends BaseTest{
 
     @Test
     public void shouldNotCreateUserNoNumbersPassword(){
-        UserModel userModel = UserModel.builder().login("mihal").email("mihu1234@gmail.com").plainPassword("Duzaliterka").build();
+        UserModel userModel = UserModel.builder().login("tmmgej").email("mihu1234@gmail.com").plainPassword("Duzaliterka").build();
         Response response = given()
                 .contentType("application/json")
                 .body(userModel)
@@ -99,7 +99,7 @@ public class UserRegister extends BaseTest{
 
     @Test
     public void shouldNotCreateUserNoAtSignEmail(){
-        UserModel userModel = UserModel.builder().login("mihal").email("mihu123gmail.com").plainPassword("Duzaliterka123").build();
+        UserModel userModel = UserModel.builder().login("tmmowina").email("tmmowinol.com").plainPassword("Duzaliterka123").build();
         Response response = given()
                 .contentType("application/json")
                 .body(userModel)
@@ -110,8 +110,8 @@ public class UserRegister extends BaseTest{
     }
 
     @Test
-    public void ShouldCreateUserCreateUserNoDomainEmail(){
-        UserModel userModel = UserModel.builder().login("mihalaa").email("mihu1234@gmail").plainPassword("Duzaliterka123").build();
+    public void ShouldCreateUserNoDomainEmail(){
+        UserModel userModel = UserModel.builder().login("tmmowina").email("tmmowina@gmail").plainPassword("Duzaliterka123").build();
         Response response = given()
                 .contentType("application/json")
                 .body(userModel)
@@ -122,7 +122,31 @@ public class UserRegister extends BaseTest{
     }
     @Test
     public void shouldNotCreateUserNoPassword(){
-        UserModel userModel = UserModel.builder().login("mihaltomurzyn").email("mihu123@gmail.com").plainPassword("").build();
+        UserModel userModel = UserModel.builder().login("tmmeksdi").email("tmmeksdi@gmail.com").plainPassword("").build();
+        Response response = given()
+                .contentType("application/json")
+                .body(userModel)
+
+                .when()
+                .post(usersEndPoint);
+        Assertions.assertEquals(HttpStatus.SC_UNPROCESSABLE_ENTITY, response.statusCode());
+    }
+
+    @Test
+    public void shouldNotCreateUserNoLogin(){
+        UserModel userModel = UserModel.builder().login("").email("tmmmasakra@gmail.com").plainPassword("Tmmuser123").build();
+        Response response = given()
+                .contentType("application/json")
+                .body(userModel)
+
+                .when()
+                .post(usersEndPoint);
+        Assertions.assertEquals(HttpStatus.SC_UNPROCESSABLE_ENTITY, response.statusCode());
+    }
+
+    @Test
+    public void shouldNotCreateUserNoEmail(){
+        UserModel userModel = UserModel.builder().login("Tmmuser123").email("").plainPassword("Tmmuser123").build();
         Response response = given()
                 .contentType("application/json")
                 .body(userModel)
