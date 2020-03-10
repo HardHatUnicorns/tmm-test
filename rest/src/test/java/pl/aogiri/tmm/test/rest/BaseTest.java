@@ -7,7 +7,7 @@ import java.io.IOException;
 import java.util.Objects;
 import java.util.Properties;
 
-public class BaseTest {
+public abstract class BaseTest {
 
     @BeforeAll
     public static void setup() throws IOException {
