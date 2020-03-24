@@ -9,6 +9,7 @@
     <version>0.1</version>
     <modules>
         <module>rest</module>
+        <module>ui</module>
     </modules>
     <name>Tournament Management Manager</name>
     <description>A system to manage game tournaments.</description>
