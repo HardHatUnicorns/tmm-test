@@ -4,7 +4,7 @@ import org.openqa.selenium.By;
 
 import static pl.aogiri.tmm.test.ui.link.Link.*;
 
-public enum LinkPaths {
+public enum LinkPaths implements BasePath{
 
     HOME_LINK(By.cssSelector("a[routerlink='" + HOME + "']")),
     ABOUT_LINK(By.cssSelector("a[routerlink='" + ABOUT + "']")),

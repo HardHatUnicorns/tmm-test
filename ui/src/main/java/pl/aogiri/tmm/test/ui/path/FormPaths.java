@@ -2,7 +2,7 @@ package pl.aogiri.tmm.test.ui.path;
 
 import org.openqa.selenium.By;
 
-public enum FormPaths {
+public enum FormPaths implements BasePath{
 
     //Inputs
     LOGIN_INPUT(By.cssSelector("input[formcontrolname='login']")),

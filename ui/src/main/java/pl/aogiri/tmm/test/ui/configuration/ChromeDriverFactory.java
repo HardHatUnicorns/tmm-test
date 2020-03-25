@@ -7,17 +7,29 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import java.util.concurrent.TimeUnit;
 
 public class ChromeDriverFactory {
-    private ChromeDriver driver;
+    private static ChromeDriver driver;
+    private static ChromeOptions options = new ChromeOptions();
 
-    public ChromeDriverFactory(){
-        ChromeOptions chromeOptions = getOptions();
-        driver = new ChromeDriver(chromeOptions);
+    protected ChromeDriverFactory(){
+    }
+
+    public static ChromeOptionsFactory ChromeDriverFactory(){
+        return new ChromeOptionsFactory(options);
+    }
+
+    public ChromeDriverFactory prepare(){
+        driver = new ChromeDriver(options);
+        return this;
     }
 
     public ChromeDriverFactory setUpDefaultValues(){
         manageWindow();
         manageTimeouts();
         return this;
+    }
+
+    public ChromeDriver create(){
+        return driver;
     }
 
     private void manageWindow(){
@@ -30,17 +42,7 @@ public class ChromeDriverFactory {
         driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
     }
 
-    private ChromeOptions getOptions(){
-        ChromeOptions chromeOptions = new ChromeOptions();
-//        chromeOptions.addArguments("--headless");
-        return chromeOptions;
-    }
-
-    public ChromeDriver create(){
+    public static ChromeDriver getDriverInstance() {
         return driver;
     }
-
-
-
-
 }

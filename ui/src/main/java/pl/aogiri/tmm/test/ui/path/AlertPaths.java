@@ -2,9 +2,9 @@ package pl.aogiri.tmm.test.ui.path;
 
 import org.openqa.selenium.By;
 
-public enum AlertPaths {
-    SUCCESS_TOAST(By.cssSelector("div[class*=\"alert-success\"]")),
-    UNAVAILABLE_LOGIN_TOAST(By.cssSelector("div[class*='alert-danger']"));
+public enum AlertPaths implements BasePath{
+    SUCCESS_ALERT(By.cssSelector("div[class*='alert-success']")),
+    DANGER_ALERT(By.cssSelector("div[class*='alert-danger']"));
 
     private By path;
 

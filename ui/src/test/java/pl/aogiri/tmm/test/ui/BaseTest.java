@@ -8,12 +8,12 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import pl.aogiri.tmm.test.ui.configuration.ChromeDriverFactory;
 import pl.aogiri.tmm.test.ui.configuration.PropertiesFactory;
 import pl.aogiri.tmm.test.ui.exception.InvalidPropertiesException;
 import pl.aogiri.tmm.test.ui.exception.PropertiesNotFetchedException;
 import pl.aogiri.tmm.test.ui.link.Link;
-import pl.aogiri.tmm.test.ui.path.LinkPaths;
+
+import static pl.aogiri.tmm.test.ui.configuration.ChromeDriverFactory.ChromeDriverFactory;
 
 public abstract class BaseTest{
 
@@ -28,7 +28,11 @@ public abstract class BaseTest{
     @BeforeAll
     static void setUpDriver(){
         WebDriverManager.chromedriver().setup();
-        driver = new ChromeDriverFactory().setUpDefaultValues().create();
+        driver = ChromeDriverFactory()
+                .create()
+                .prepare()
+                .setUpDefaultValues()
+                .create();
         wait = new WebDriverWait(driver, 5);
 
     }

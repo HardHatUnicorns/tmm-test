@@ -2,7 +2,7 @@ package pl.aogiri.tmm.test.ui.path;
 
 import org.openqa.selenium.By;
 
-public enum ButtonPaths {
+public enum ButtonPaths implements BasePath{
     ARROW_TO_HOMEPAGE_BUTTON(By.cssSelector("a[class*='back-button']"));
 
     private By path;
