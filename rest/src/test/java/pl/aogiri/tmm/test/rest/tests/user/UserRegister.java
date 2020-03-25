@@ -3,6 +3,7 @@ package pl.aogiri.tmm.test.rest.tests.user;
 import io.restassured.response.Response;
 import org.apache.http.HttpStatus;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.DisplayNameGeneration;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.NullAndEmptySource;
@@ -10,9 +11,11 @@ import org.junit.jupiter.params.provider.ValueSource;
 import pl.aogiri.tmm.test.rest.BaseTest;
 import pl.aogiri.tmm.test.rest.model.ResponseModel;
 import pl.aogiri.tmm.test.rest.model.UserModel;
+import pl.aogiri.tmm.test.rest.util.ReplaceCamelCase;
 
 import static io.restassured.RestAssured.given;
 
+@DisplayNameGeneration(value = ReplaceCamelCase.class)
 public class UserRegister extends BaseTest {
     private final static String USERS_END_POINT = "/user/register";
 
@@ -31,7 +34,7 @@ public class UserRegister extends BaseTest {
     }
 
     @Test
-    public void ShouldCreateUserNoDomainEmail() {
+    public void shouldCreateUserNoDomainEmail() {
         UserModel userModel = UserModel.builder().login("tmmUserRegisterNoDomain").email("tmmUserNoDomain@tmm").plainPassword("Password123").build();
         Response response = given()
                 .contentType("application/json")
