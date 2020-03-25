@@ -23,7 +23,7 @@ public class ExampleTestToDelete extends BaseTest {
     public void shouldBe(LinkPaths linkPath) throws PropertiesNotFetchedException {
         driver.get(Link.HOME.getFullLink());
 
-        assertTrue(WebElementUtil.getAndIsDisplayed(driver, linkPath.getLink()));
+        assertTrue(WebElementUtil.getAndIsDisplayed(driver, linkPath.getPath()));
     }
 
     @ParameterizedTest
@@ -31,6 +31,6 @@ public class ExampleTestToDelete extends BaseTest {
     public void shouldNotBe(LinkPaths linkPath) throws PropertiesNotFetchedException {
         driver.get(Link.HOME.getFullLink());
 
-        assertFalse(WebElementUtil.getAndIsDisplayed(driver, linkPath.getLink()));
+        assertFalse(WebElementUtil.getAndIsDisplayed(driver, linkPath.getPath()));
     }
 }

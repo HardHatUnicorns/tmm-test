@@ -12,7 +12,7 @@ public enum FormPaths {
 
     //Submits
     LOGIN_SUBMIT(By.xpath("//form/div/button/span[contains(text(),'Login')]")),
-    REGISTER_SUBMIT(By.xpath("//form/div/button/span[contains(text(),'Register account')]"));
+    REGISTER_SUBMIT(By.cssSelector("button[class*=btn-primary]>span"));
 
     private By path;
 

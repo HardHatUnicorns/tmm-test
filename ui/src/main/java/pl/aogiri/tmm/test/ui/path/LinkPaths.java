@@ -22,7 +22,7 @@ public enum LinkPaths {
         this.link = link;
     }
 
-    public By getLink() {
+    public By getPath() {
         return link;
     }
 }

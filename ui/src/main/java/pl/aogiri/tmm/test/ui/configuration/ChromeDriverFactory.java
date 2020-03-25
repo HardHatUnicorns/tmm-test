@@ -32,7 +32,7 @@ public class ChromeDriverFactory {
 
     private ChromeOptions getOptions(){
         ChromeOptions chromeOptions = new ChromeOptions();
-        chromeOptions.addArguments("--headless");
+//        chromeOptions.addArguments("--headless");
         return chromeOptions;
     }
 

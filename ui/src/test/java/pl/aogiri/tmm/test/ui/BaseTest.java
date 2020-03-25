@@ -3,6 +3,7 @@ package pl.aogiri.tmm.test.ui;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.slf4j.Logger;
@@ -11,6 +12,8 @@ import pl.aogiri.tmm.test.ui.configuration.ChromeDriverFactory;
 import pl.aogiri.tmm.test.ui.configuration.PropertiesFactory;
 import pl.aogiri.tmm.test.ui.exception.InvalidPropertiesException;
 import pl.aogiri.tmm.test.ui.exception.PropertiesNotFetchedException;
+import pl.aogiri.tmm.test.ui.link.Link;
+import pl.aogiri.tmm.test.ui.path.LinkPaths;
 
 public abstract class BaseTest{
 
@@ -43,6 +46,11 @@ public abstract class BaseTest{
             throw new PropertiesNotFetchedException();
     }
 
+    @BeforeEach
+    void setUp() throws PropertiesNotFetchedException {
+        driver.get(Link.HOME.getFullLink());
+
+    }
 
     @AfterAll
     public static void tearDown() {

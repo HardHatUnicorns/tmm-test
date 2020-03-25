@@ -10,26 +10,31 @@ public class WebElementUtil {
     }
 
     public static void getAndClick(WebDriver driver, By by){
-        get(driver,by).click();
+        get(driver, by).click();
     }
 
     public static void getAndWrite(WebDriver driver, By by, String value){
-        get(driver,by).sendKeys(value);
+        get(driver, by).sendKeys(value);
     }
 
     public static void getAndClear(WebDriver driver, By by){
-        get(driver,by).clear();
+        get(driver, by).clear();
     }
 
     public static boolean getAndIsDisplayed(WebDriver driver, By by){
-        return get(driver,by).isDisplayed();
+        return get(driver, by).isDisplayed();
     }
 
     public static boolean getAndIsSelected(WebDriver driver, By by){
-        return get(driver,by).isSelected();
+        return get(driver, by).isSelected();
     }
 
     public static boolean getAndIsEnabled(WebDriver driver, By by){
-        return get(driver,by).isEnabled();
+        return get(driver, by).isEnabled();
+    }
+
+    public static String getAndGetText(WebDriver driver, By by) {
+
+        return get(driver, by).getText();
     }
 }
