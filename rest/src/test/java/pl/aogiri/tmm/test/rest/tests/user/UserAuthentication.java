@@ -10,7 +10,7 @@ import pl.aogiri.tmm.test.rest.model.UserModel;
 import static io.restassured.RestAssured.given;
 
 public class UserAuthentication extends BaseTest {
-    private final String USERS_END_POINT = "/user/authentication";
+    private final static String USERS_END_POINT = "/user/authentication";
 
     @Test
     public void shouldNotAuthenticateWithDisabledAccount() {

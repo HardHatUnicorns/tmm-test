@@ -4,12 +4,13 @@ import lombok.Builder;
 import lombok.Data;
 
 import java.util.ArrayList;
+import java.util.List;
 
 @Data
 @Builder
 public class ResponseModel {
     private Integer status;
     private String timestamp;
-    private ArrayList<ErrorModel> errors;
+    private List<ErrorModel> errors;
 
 }

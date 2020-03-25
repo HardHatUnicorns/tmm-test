@@ -14,7 +14,7 @@ import pl.aogiri.tmm.test.rest.model.UserModel;
 import static io.restassured.RestAssured.given;
 
 public class UserRegister extends BaseTest {
-    private final String USERS_END_POINT = "/user/register";
+    private final static String USERS_END_POINT = "/user/register";
 
     @Test
     public void shouldCreateUser() {
