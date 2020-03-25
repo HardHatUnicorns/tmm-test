@@ -29,6 +29,7 @@ public abstract class BaseTest{
     static void setUpDriver(){
         WebDriverManager.chromedriver().setup();
         driver = ChromeDriverFactory()
+                .setHeadless()
                 .create()
                 .prepare()
                 .setUpDefaultValues()
