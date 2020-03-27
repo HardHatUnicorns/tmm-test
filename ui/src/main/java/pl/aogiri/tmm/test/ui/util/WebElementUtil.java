@@ -2,8 +2,11 @@ package pl.aogiri.tmm.test.ui.util;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.Color;
 import pl.aogiri.tmm.test.ui.configuration.ChromeDriverFactory;
 import pl.aogiri.tmm.test.ui.path.BasePath;
+
+
 
 public class WebElementUtil{
     private static final WebDriver driver = ChromeDriverFactory.getDriverInstance();
@@ -38,5 +41,14 @@ public class WebElementUtil{
 
     public static <E extends BasePath> String getAndGetText(E by) {
         return get(by).getText();
+    }
+
+    public static <E extends BasePath> String getCssValue(E by, String key) {
+        return get(by).getCssValue(key);
+    }
+
+    public static <E extends BasePath> Color getColor(E by) {
+        return Color.fromString(getCssValue(by, "color"));
+
     }
 }

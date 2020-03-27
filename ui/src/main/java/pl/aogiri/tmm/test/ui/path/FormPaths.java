@@ -12,7 +12,13 @@ public enum FormPaths implements BasePath{
 
     //Submits
     LOGIN_SUBMIT(By.xpath("//form/div/button/span[contains(text(),'Login')]")),
-    REGISTER_SUBMIT(By.cssSelector("button[class*=btn-primary]>span"));
+    REGISTER_SUBMIT(By.cssSelector("button[class*=btn-primary]>span")),
+
+    //Labels
+    EMAIL_LABEL(By.cssSelector("label[for='email']")),
+    LOGIN_LABEL(By.cssSelector("label[for='login']")),
+    PASSWORD_LABEL(By.cssSelector("label[for='password']")),
+    PASSWORD_CONFIRM_LABEL(By.cssSelector("label[for='password-confirm']"));
 
     private By path;
 

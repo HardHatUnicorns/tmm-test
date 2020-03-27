@@ -1,8 +1,10 @@
 package pl.aogiri.tmm.test.ui.method;
 
+import org.openqa.selenium.support.Color;
 import pl.aogiri.tmm.test.ui.path.FormPaths;
 import pl.aogiri.tmm.test.ui.path.LinkPaths;
 import pl.aogiri.tmm.test.ui.util.WebElementUtil;
+
 
 public class RegisterMethods {
 
@@ -19,4 +21,7 @@ public class RegisterMethods {
         WebElementUtil.getAndClick(FormPaths.REGISTER_SUBMIT);
     }
 
+    public static Color getLabelColor(FormPaths label) {
+        return WebElementUtil.getColor(label);
+    }
 }
