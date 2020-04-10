@@ -155,7 +155,7 @@ public class UserRegister extends BaseTest {
                 .queryParam("email", "invalid@Email.com")
                 .when()
                 .get(USERS_TOKEN_END_POINT);
-        Assertions.assertEquals(HttpStatus.SC_NO_CONTENT, response.statusCode(), "Token is not correct");
+        Assertions.assertEquals(HttpStatus.SC_BAD_REQUEST, response.statusCode(), "Token is not correct");
         Assertions.assertTrue(response.as(ResponseModel.class).getErrors().parallelStream().anyMatch(error -> error.getMessage().equals("Invalid data caused the activation to fail")));
 
 
