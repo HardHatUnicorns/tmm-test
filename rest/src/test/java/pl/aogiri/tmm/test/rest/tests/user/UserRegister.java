@@ -18,6 +18,7 @@ import static io.restassured.RestAssured.given;
 @DisplayNameGeneration(value = ReplaceCamelCase.class)
 public class UserRegister extends BaseTest {
     private final static String USERS_END_POINT = "/user/register";
+    private final static String USERS_TOKEN_END_POINT = "/user/activate";
 
     @Test
     public void shouldCreateUser() {
@@ -146,4 +147,18 @@ public class UserRegister extends BaseTest {
         Assertions.assertEquals(HttpStatus.SC_UNPROCESSABLE_ENTITY, response.statusCode());
         Assertions.assertTrue(response.as(ResponseModel.class).getErrors().parallelStream().anyMatch(error -> error.getMessage().equals("Password is required")));
     }
+
+    @Test
+    public void shouldNotActivateUser() {
+        Response response = given()
+                .queryParam("token", "invalidToken")
+                .queryParam("email", "invalid@Email.com")
+                .when()
+                .get(USERS_TOKEN_END_POINT);
+        Assertions.assertEquals(HttpStatus.SC_NO_CONTENT, response.statusCode(), "Token is not correct");
+        Assertions.assertTrue(response.as(ResponseModel.class).getErrors().parallelStream().anyMatch(error -> error.getMessage().equals("Invalid data caused the activation to fail")));
+
+
+    }
+
 }
